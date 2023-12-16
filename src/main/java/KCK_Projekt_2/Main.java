@@ -8,6 +8,7 @@ public class Main {
             @Override
             public void run() {
                 MainMenu.runMenu();
+                //GameEngine gameEngine = new GameEngine("Test");
             }
         });
     }

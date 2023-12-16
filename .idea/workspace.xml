@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="">
+    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="GameEngine work">
+      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/IntroductionWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Campfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Campfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/MainMenu.java" afterDir="false" />
@@ -49,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/jakub/IdeaProjects/ztp-mario",
+    "last_opened_file_path": "C:/Users/jakub/IdeaProjects/KCK_Projekt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,11 +71,24 @@
       <updated>1702565944718</updated>
       <workItem from="1702565945794" duration="9196000" />
       <workItem from="1702600456734" duration="113000" />
-      <workItem from="1702684298256" duration="4698000" />
+      <workItem from="1702684298256" duration="4739000" />
+      <workItem from="1702724358733" duration="29727000" />
     </task>
+    <task id="LOCAL-00001" summary="GameEngine work">
+      <created>1702689034242</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702689034242</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GameEngine work" />
+    <option name="LAST_COMMIT_MESSAGE" value="GameEngine work" />
   </component>
 </project>

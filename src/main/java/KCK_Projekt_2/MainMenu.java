@@ -59,7 +59,7 @@ public class MainMenu {
             e.printStackTrace();
         }
 
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(120, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 labelMenu.setIcon(frames[currentFrame]);
@@ -92,8 +92,9 @@ public class MainMenu {
                 if (result == JOptionPane.OK_OPTION) {
                     String playerName = inputField.getText();
                     if (!playerName.isEmpty()) {
-                        GameEngine gameEngine = new GameEngine(playerName);
-                        //gameEngine.startNewGame(playerName);
+                        //GameEngine gameEngine = new GameEngine(playerName);
+                        IntroductionWindow introductionWindow = new IntroductionWindow(playerName);
+
                         System.out.println("Rozpoczęto nową grę dla gracza: " + playerName);
                         window.dispose();
                     } else {
@@ -117,12 +118,13 @@ public class MainMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(window,
-                        "Celem gry jest dotarcie do zamku i pokonanie głównego przeciwnika:\n" +
+                        "Celem gry jest przejście całego lochu i pokonanie bossa\n" +
                                 "1. Wybierz nową grę.\n" +
                                 "2. Używaj strzałek do poruszania się po mapie.\n" +
-                                "3. Wybieraj strzałkami opcje do walki z przeciwnikami.\n" +
-                                "4. Wybieraj strzałkami przedmioty u kupca.\n" +
-                                "5. Ogniska służą do odpoczynku.",
+                                "3. Za znakiem zapytania ukryte są elementy lochu.\n" +
+                                "4. Przy ognisku możesz się wyleczyć i odpocząć.\n" +
+                                "5. Czaszka oznacza przeciwnika, walcz dzielnie i wygrywaj!\n" +
+                                "6. W skrzyniach czekają na ciebie niespodzianki.",
                         "Instrukcja",
                         JOptionPane.INFORMATION_MESSAGE);
             }
