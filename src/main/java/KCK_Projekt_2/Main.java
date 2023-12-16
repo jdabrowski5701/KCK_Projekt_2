@@ -1,5 +1,14 @@
-package KCK_Projekt_2;public class Main {
+package KCK_Projekt_2;
+
+import javax.swing.*;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MainMenu.runMenu();
+            }
+        });
     }
 }
