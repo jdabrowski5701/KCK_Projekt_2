@@ -281,6 +281,7 @@ public class Boss extends JFrame {
         if (enemyHealth <= 0) {
             System.out.println("Wygrałeś! Przeciwnik został pokonany.");
             infoLabel.setText("Wygrałeś! Przeciwnik został pokonany.");
+            GameEngine.coins += 500;
             //JOptionPane.showMessageDialog(this, "Wygrałeś! Przeciwnik został pokonany.", "Wygrana", JOptionPane.INFORMATION_MESSAGE);
             EndingWindow endWin = new EndingWindow(GameEngine.playername);
             dispose();
