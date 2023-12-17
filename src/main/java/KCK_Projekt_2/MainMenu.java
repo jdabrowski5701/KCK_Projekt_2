@@ -18,6 +18,7 @@ public class MainMenu {
         JFrame window = new JFrame("Main menu");
         window.setSize(1920, 1080);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setUndecorated(true);
 
         JPanel backgroundPanel = new JPanel() {
             private Image backgroundImage;

@@ -9,6 +9,7 @@ public class IntroductionWindow extends JFrame {
         setTitle("Wprowadzenie do gry");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 750);
+        setUndecorated(true);
         setLocationRelativeTo(null);
 
         // Panel główny
@@ -16,7 +17,7 @@ public class IntroductionWindow extends JFrame {
         panel.setLayout(new BorderLayout());
 
         // Dodanie tła graficznego
-        ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/img/pause.jpg"));
+        ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/img/introduction.jpg"));
         JLabel background = new JLabel(backgroundImage);
         panel.add(background, BorderLayout.CENTER);
         background.setLayout(new BorderLayout());
@@ -47,6 +48,7 @@ public class IntroductionWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 GameEngine gameEngine = new GameEngine(playerName);
+
             }
         });
 

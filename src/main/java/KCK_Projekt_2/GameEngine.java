@@ -30,8 +30,12 @@ public class GameEngine extends JFrame implements KeyListener {
     private JLabel healthLabel;
     private JLabel coinsLabel;
 
-    private int health = 100;
-    private int coins = 1000;
+
+    private int health;
+    private int maxHealth;
+    private int coins;
+    private int damage;
+    private int chestPrize;
 
     private enum PlayerAnimationState {
         LEFT,
@@ -40,10 +44,10 @@ public class GameEngine extends JFrame implements KeyListener {
         DOWN
     }
 
-    private PlayerAnimationState animationState = PlayerAnimationState.DOWN; // Stan początkowy animacji
-    private int currentFrame = 0; // Aktualna klatka animacji
+    private PlayerAnimationState animationState = PlayerAnimationState.DOWN;
+    private int currentFrame = 0;
 
-    // Klatki animacji dla każdego kierunku
+
     private BufferedImage[] playerLeftFrames;
     private BufferedImage[] playerRightFrames;
     private BufferedImage[] playerUpFrames;
@@ -56,16 +60,24 @@ public class GameEngine extends JFrame implements KeyListener {
         setResizable(false);
         addKeyListener(this);
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
+
+        setSize(width, height);
+        setLocationRelativeTo(null);
+
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
 
+        /*
         if (!gd.isFullScreenSupported()) {
             System.out.println("Pełny ekran nie jest obsługiwany");
             System.exit(0);
         }
 
         gd.setFullScreenWindow(this);
-
+        */
         wallImage = createImage("/img/wall.png");
         floorImage = createBufferedImage("/img/floor.png");
         hiddenImage = createImage("/img/hidden.png");
@@ -78,6 +90,12 @@ public class GameEngine extends JFrame implements KeyListener {
         playerRightFrames = loadPlayerFrames("/img/player_right.png", 4);
         playerUpFrames = loadPlayerFrames("/img/player_up.png", 4);
         playerDownFrames = loadPlayerFrames("/img/player_down.png", 4);
+
+        health = 50;
+        maxHealth = 100;
+        coins = 0;
+        damage = 10;
+        chestPrize = 0;
 
         initializeBoard();
 
@@ -102,7 +120,7 @@ public class GameEngine extends JFrame implements KeyListener {
         labelsBackground.setPreferredSize(new Dimension(450, 80));
         labelsBackground.setBackground(Color.DARK_GRAY);
 
-// Ustawienie ikony gracza
+
         ImageIcon playerIcon = createImageIcon("/img/player_icon.png");
         if (playerIcon != null) {
             playerIcon = new ImageIcon(playerIcon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
@@ -112,20 +130,20 @@ public class GameEngine extends JFrame implements KeyListener {
             gbcPlayerLabel.gridx = 0;
             gbcPlayerLabel.gridy = 0;
             gbcPlayerLabel.anchor = GridBagConstraints.WEST;
-            gbcPlayerLabel.insets = new Insets(0, 10, 0, 10); // Dodanie odstępu
+            gbcPlayerLabel.insets = new Insets(0, 10, 0, 10);
             labelsBackground.add(playerLabel, gbcPlayerLabel);
         }
 
 
-// Etykieta Zdrowie
+
         healthLabel = new JLabel("Zdrowie: " + health);
         healthLabel.setForeground(Color.WHITE);
-        healthLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Zmiana rozmiaru czcionki
+        healthLabel.setFont(new Font("Arial", Font.BOLD, 18));
         GridBagConstraints gbcHealthLabel = new GridBagConstraints();
         gbcHealthLabel.gridx = 1;
         gbcHealthLabel.gridy = 0;
         gbcHealthLabel.anchor = GridBagConstraints.WEST;
-        gbcHealthLabel.insets = new Insets(0, 0, 0, 10); // Dodanie odstępu
+        gbcHealthLabel.insets = new Insets(0, 0, 0, 10);
         ImageIcon healthIcon = createImageIcon("/img/heart.png");
         if (healthIcon != null) {
             healthIcon = new ImageIcon(healthIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
@@ -134,34 +152,34 @@ public class GameEngine extends JFrame implements KeyListener {
         labelsBackground.add(healthLabel, gbcHealthLabel);
 
 
-// Etykieta Monet
+
         coinsLabel = new JLabel("Monety: " + coins);
         coinsLabel.setForeground(Color.WHITE);
-        coinsLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Zmiana rozmiaru czcionki
+        coinsLabel.setFont(new Font("Arial", Font.BOLD, 18));
         GridBagConstraints gbcCoinsLabel = new GridBagConstraints();
         gbcCoinsLabel.gridx = 3;
         gbcCoinsLabel.gridy = 0;
         gbcCoinsLabel.anchor = GridBagConstraints.WEST;
-        gbcCoinsLabel.insets = new Insets(0, 10, 0, 10); // Dodanie odstępu
+        gbcCoinsLabel.insets = new Insets(0, 10, 0, 10);
         labelsBackground.add(coinsLabel, gbcCoinsLabel);
 
-// Wczytanie animacji monet z pliku PNG
-        ImageIcon[] coinAnimationFrames = new ImageIcon[4]; // Zakładamy 4 klatki animacji monet
+
+        ImageIcon[] coinAnimationFrames = new ImageIcon[4];
 
         try {
             BufferedImage image = ImageIO.read(GameEngine.class.getResource("/img/coins.png"));
 
             int frameWidth = image.getWidth();
-            int frameHeight = image.getHeight() / 4; // Zakładamy 4 klatki animacji monet
+            int frameHeight = image.getHeight() / 4;
 
-            for (int i = 0; i < 4; i++) { // Zakładamy 4 klatki animacji monet
+            for (int i = 0; i < 4; i++) {
                 coinAnimationFrames[i] = new ImageIcon(image.getSubimage(0, i * frameHeight, frameWidth, frameHeight));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-// Utworzenie timera do obsługi animacji
+
         Timer coinAnimationTimer = new Timer(120, new ActionListener() {
             int currentFrame = 0;
 
@@ -173,7 +191,7 @@ public class GameEngine extends JFrame implements KeyListener {
         });
         coinAnimationTimer.start();
 
-// Ustawienie panelu z etykietami Zdrowie i Monety w statystykach
+
         GridBagConstraints gbcLabelsBackground = new GridBagConstraints();
         gbcLabelsBackground.gridx = 0;
         gbcLabelsBackground.gridy = 0;
@@ -238,7 +256,7 @@ public class GameEngine extends JFrame implements KeyListener {
         enemies = new ArrayList<>();
         chests = new ArrayList<>();
 
-        // Ustawienie wszystkich pól planszy jako puste
+
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (y == 0 || y == board.length - 1 || x == 0 || x == board[y].length - 1) {
@@ -271,7 +289,7 @@ public class GameEngine extends JFrame implements KeyListener {
 
         }
 
-       // Utworzenie ścian pionowych z dziurami
+       // Utworzenie ścian pionowych
         for (int y = 0; y < 24; y++) {
             board[y][9] = '#';
             for(int yt =8; yt<11; yt++){board[yt][9] = ' ';}
@@ -291,18 +309,18 @@ public class GameEngine extends JFrame implements KeyListener {
 
         }
 
-        // Set boss position at the end of the path
+
         int bossX = 41;
         int bossY = 3;
-        board[bossY][bossX] = 'X'; // Boss symbol
+        board[bossY][bossX] = 'X';
 
-        // Dodanie ognisk
+
         addObjectsToBoard(campfires, 6, 'H');
 
-        // Dodanie przeciwników
+
         addObjectsToBoard(enemies, 12, 'E');
 
-        // Dodanie kupców
+
         addObjectsToBoard(chests, 4, 'M');
 
 
@@ -356,7 +374,7 @@ public class GameEngine extends JFrame implements KeyListener {
                 currentFrames = playerDownFrames;
                 break;
         }
-        // Wyświetlanie odpowiednich klatek animacji gracza
+
         if (currentFrames != null && currentFrame >= 0 && currentFrame < currentFrames.length) {
             g.drawImage(currentFrames[currentFrame], playerX * tileSize, playerY * tileSize, tileSize, tileSize, this);
         }
@@ -389,10 +407,10 @@ public class GameEngine extends JFrame implements KeyListener {
             int elementX = (int) element.getX();
             int elementY = (int) element.getY();
 
-            // Sprawdź odległość od gracza
+
             int playerDistance = Math.abs(playerX - elementX) + Math.abs(playerY - elementY);
 
-            // Sprawdź czy element jest oznaczony jako ukryty ('.') lub jest jednym z wybranych obiektów do aktualizacji
+
             if (playerDistance > 5 && (board[elementY][elementX] == '.' || board[elementY][elementX] == 'H'
                     || board[elementY][elementX] == 'M' || board[elementY][elementX] == 'E')) {
                 board[elementY][elementX] = icon;
@@ -443,8 +461,24 @@ public class GameEngine extends JFrame implements KeyListener {
         updateHiddenIcon(enemies, 'E');  // Aktualizacja ikon przeciwników
         updateHiddenIcon(chests, 'M'); // Aktualizacja ikon skrzyń
         if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != '#') {
-            if (board[newY][newX] == 'H' || board[newY][newX] == 'E' || board[newY][newX] == 'M') {
-                board[newY][newX] = ' '; // Usuń ukryty element z planszy
+            if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length) {
+                if (board[newY][newX] == 'H') {
+                    // Obsługa ogniska
+                    handleCampfire();
+                    board[newY][newX] = ' ';
+                } else if (board[newY][newX] == 'E') {
+                    // Obsługa walki z przeciwnikiem
+                    handleEnemy();
+                    board[newY][newX] = ' ';
+                } else if (board[newY][newX] == 'M') {
+                    // Obsługa skrzyni
+                    handleChest();
+                    board[newY][newX] = ' ';
+                } else if (board[newY][newX] == 'X') {
+                    // Obsługa bossa
+                    handleBoss();
+                    board[newY][newX] = ' ';
+                }
             }
 
             board[playerY][playerX] = ' '; // Stara pozycja gracza
@@ -452,12 +486,48 @@ public class GameEngine extends JFrame implements KeyListener {
             playerY = newY;
             board[playerY][playerX] = 'O'; // Nowa pozycja gracza
 
-
             updateHiddenIcon(campfires, '.');
             updateHiddenIcon(enemies, '.');
             updateHiddenIcon(chests, '.');
         }
     }
+
+    private void handleCampfire() {
+        System.out.println("Ognisko");
+        Campfire campfire = new Campfire();
+        health = maxHealth;
+        updateStats();
+
+    }
+
+    private void handleEnemy(){
+        System.out.println("Przeciwnik");
+        Enemy enemy = new Enemy(damage, health);
+        updateStats();
+    }
+    private void handleChest(){
+        System.out.println("Skrzynia");
+        Chest chest = new Chest(chestPrize);
+        switch (chestPrize){
+            case 0:
+                maxHealth = 150;
+                health = maxHealth;
+                break;
+            case 1:
+                damage = 20;
+                break;
+            case 2:
+                coins += 500;
+                break;
+            case 3:
+                maxHealth = 200;
+                health = maxHealth;
+                break;
+
+        }
+        chestPrize++;
+    }
+    private void handleBoss(){System.out.println("Boss");}
 
     private void showPauseMenu() {
         if (pauseDialog == null || !pauseDialog.isDisplayable()) {
@@ -468,13 +538,13 @@ public class GameEngine extends JFrame implements KeyListener {
             pauseDialog.setLocationRelativeTo(null);
 
             JPanel pausePanel = new JPanel(new GridLayout(0, 1));
-            pausePanel.setBackground(new Color(64, 64, 64));  // Ustawienie koloru beżowego
+            pausePanel.setBackground(new Color(64, 64, 64));
 
             JButton buttonResume = new JButton("Wznów");
             JButton buttonGuide = new JButton("Instrukcja");
             JButton buttonQuit = new JButton("Wyjście");
 
-            buttonResume.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button.png")));
+            buttonResume.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button1.png")));
             buttonResume.setHorizontalTextPosition(SwingConstants.CENTER);
             buttonResume.setVerticalTextPosition(SwingConstants.CENTER);
             buttonResume.setOpaque(false);
@@ -483,7 +553,7 @@ public class GameEngine extends JFrame implements KeyListener {
             buttonResume.setForeground(Color.WHITE);
             buttonResume.setFont(new Font("Arial", Font.BOLD, 20));
 
-            buttonGuide.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button.png")));
+            buttonGuide.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button1.png")));
             buttonGuide.setHorizontalTextPosition(SwingConstants.CENTER);
             buttonGuide.setVerticalTextPosition(SwingConstants.CENTER);
             buttonGuide.setOpaque(false);
@@ -492,7 +562,7 @@ public class GameEngine extends JFrame implements KeyListener {
             buttonGuide.setForeground(Color.WHITE);
             buttonGuide.setFont(new Font("Arial", Font.BOLD, 20));
 
-            buttonQuit.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button.png")));
+            buttonQuit.setIcon(new ImageIcon(MainMenu.class.getResource("/img/menu_button1.png")));
             buttonQuit.setHorizontalTextPosition(SwingConstants.CENTER);
             buttonQuit.setVerticalTextPosition(SwingConstants.CENTER);
             buttonQuit.setOpaque(false);
