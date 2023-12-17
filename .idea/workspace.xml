@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="Campfire, Chest Done. Enemy work">
-      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Boss.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/EndingWindow.java" afterDir="false" />
+    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="GAME DONE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,20 +39,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jakub/IdeaProjects/KCK_Projekt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/jakub/IdeaProjects/KCK_Projekt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jakub\IdeaProjects\KCK_Projekt_2\src\main\resources\img" />
@@ -75,7 +72,7 @@
       <workItem from="1702684298256" duration="4739000" />
       <workItem from="1702724358733" duration="33861000" />
       <workItem from="1702773067924" duration="370000" />
-      <workItem from="1702819634538" duration="29018000" />
+      <workItem from="1702819634538" duration="30000000" />
     </task>
     <task id="LOCAL-00001" summary="GameEngine work">
       <created>1702689034242</created>
@@ -98,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702850075691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GAME DONE">
+      <created>1702854660212</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702854660212</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +112,7 @@
     <MESSAGE value="GameEngine work" />
     <MESSAGE value="GameEngine update, IntroductionWindow done" />
     <MESSAGE value="Campfire, Chest Done. Enemy work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Campfire, Chest Done. Enemy work" />
+    <MESSAGE value="GAME DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GAME DONE" />
   </component>
 </project>

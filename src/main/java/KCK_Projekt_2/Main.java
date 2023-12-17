@@ -7,11 +7,11 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //MainMenu.runMenu();
+                MainMenu.runMenu();
                 //GameEngine gameEngine = new GameEngine("Test");
                 //Campfire campfire = new Campfire();
                 //Enemy enemy = new Enemy(10, 100);
-                Boss boss = new Boss(20, 500);
+                //Boss boss = new Boss(20, 500);
             }
         });
     }
