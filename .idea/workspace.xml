@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="GameEngine update, IntroductionWindow done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Chest.java" afterDir="false" />
+    <list default="true" id="1ef92e24-9eb6-4d18-b0f4-48b3af62415f" name="Changes" comment="Campfire, Chest Done. Enemy work">
+      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Boss.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/EndingWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Campfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Campfire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/IntroductionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/IntroductionWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KCK_Projekt_2/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/menu_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/menu_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/pause.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +75,7 @@
       <workItem from="1702684298256" duration="4739000" />
       <workItem from="1702724358733" duration="33861000" />
       <workItem from="1702773067924" duration="370000" />
-      <workItem from="1702819634538" duration="24460000" />
+      <workItem from="1702819634538" duration="29018000" />
     </task>
     <task id="LOCAL-00001" summary="GameEngine work">
       <created>1702689034242</created>
@@ -95,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702768688518</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Campfire, Chest Done. Enemy work">
+      <created>1702850075691</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702850075691</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +107,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GameEngine work" />
     <MESSAGE value="GameEngine update, IntroductionWindow done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GameEngine update, IntroductionWindow done" />
+    <MESSAGE value="Campfire, Chest Done. Enemy work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Campfire, Chest Done. Enemy work" />
   </component>
 </project>

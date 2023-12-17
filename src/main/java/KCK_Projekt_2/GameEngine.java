@@ -27,13 +27,14 @@ public class GameEngine extends JFrame implements KeyListener {
     private ArrayList<Point> enemies;
     private ArrayList<Point> chests;
     private char hiddenIcon = '.';
-    private JLabel healthLabel;
-    private JLabel coinsLabel;
+    private static JLabel healthLabel;
+    private static JLabel coinsLabel;
+    public static String playername;
 
 
-    private int health;
+    public static int health;
     private int maxHealth;
-    private int coins;
+    public static int coins;
     private int damage;
     private int chestPrize;
 
@@ -53,8 +54,9 @@ public class GameEngine extends JFrame implements KeyListener {
     private BufferedImage[] playerUpFrames;
     private BufferedImage[] playerDownFrames;
 
-    public GameEngine(String playerName) {
-        super("Gra - " + playerName);
+    public GameEngine(String playerNameInput) {
+        super("Gra - " + playerNameInput);
+        playername = playerNameInput;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -91,7 +93,7 @@ public class GameEngine extends JFrame implements KeyListener {
         playerUpFrames = loadPlayerFrames("/img/player_up.png", 4);
         playerDownFrames = loadPlayerFrames("/img/player_down.png", 4);
 
-        health = 50;
+        health = 100;
         maxHealth = 100;
         coins = 0;
         damage = 10;
@@ -245,7 +247,7 @@ public class GameEngine extends JFrame implements KeyListener {
         }
     }
 
-    private void updateStats() {
+    public static void updateStats() {
         healthLabel.setText("Zdrowie: " + health);
         coinsLabel.setText("Monety: " + coins);
     }
@@ -527,7 +529,10 @@ public class GameEngine extends JFrame implements KeyListener {
         }
         chestPrize++;
     }
-    private void handleBoss(){System.out.println("Boss");}
+    private void handleBoss(){
+        System.out.println("Boss");
+        Boss boss = new Boss(damage, health);
+    }
 
     private void showPauseMenu() {
         if (pauseDialog == null || !pauseDialog.isDisplayable()) {

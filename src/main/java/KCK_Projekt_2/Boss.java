@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Enemy extends JFrame {
+public class Boss extends JFrame {
 
     private BufferedImage playerAttackSheet;
     private ImageIcon[] playerAttackFrames;
@@ -29,14 +29,13 @@ public class Enemy extends JFrame {
     private JLabel enemyInfoLabel;
     private JLabel playerHealthLabel;
     private JLabel enemyHealthLabel;
-    private int enemyType;
     private int enemyDamage;
     private int enemyHealth;
     private int playerHealth;
     private int playerDamage;
 
-    public Enemy(int damage, int health) {
-        setTitle("Przeciwnik");
+    public Boss(int damage, int health) {
+        setTitle("Boss");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -75,27 +74,12 @@ public class Enemy extends JFrame {
             playerAttackFrames[i] = new ImageIcon(frameImage);
         }
 
-        Random random = new Random();
-        enemyType = random.nextInt(3) + 1;
+
         ImageIcon enemyImage = null;
 
-        switch (enemyType) {
-            case 1:
-                enemyImage = new ImageIcon(getClass().getResource("/img/enemy1.png"));
+                enemyImage = new ImageIcon(getClass().getResource("/img/boss_model.png"));
                 enemyDamage = 10;
-                enemyHealth = 50;
-                break;
-            case 2:
-                enemyImage = new ImageIcon(getClass().getResource("/img/enemy2.png"));
-                enemyDamage = 15;
-                enemyHealth = 70;
-                break;
-            case 3:
-                enemyImage = new ImageIcon(getClass().getResource("/img/enemy3.png"));
-                enemyDamage = 20;
-                enemyHealth = 60;
-                break;
-        }
+                enemyHealth = 150;
 
         Image scaledEnemyImage = enemyImage.getImage().getScaledInstance(enemyWidth, enemyHeight, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledEnemyImage);
@@ -108,7 +92,7 @@ public class Enemy extends JFrame {
         gbcEnemy.gridx = 1;
         gbcEnemy.gridy = 0;
         gbcEnemy.anchor = GridBagConstraints.EAST;
-        gbcEnemy.insets = new Insets(250, 0, 0, 0);
+        gbcEnemy.insets = new Insets(200, 0, 0, 0);
 
         mainPanel.add(enemyLabel, gbcEnemy);
 
@@ -253,12 +237,12 @@ public class Enemy extends JFrame {
             case 0:
                 enemyInfoLabel.setText("Przeciwnik wykonuje: Lekki atak " + enemyDamage + " OBR");
                 playerDamageDealt = enemyDamage;
-                playEnemyAttackAnimation(enemyType);
+                playEnemyAttackAnimation("Light");
                 break;
             case 1:
                 enemyInfoLabel.setText("Przeciwnik wykonuje: Silny atak " + enemyDamage * 2 + " OBR");
                 playerDamageDealt = enemyDamage * 2;
-                playEnemyAttackAnimation(enemyType);
+                playEnemyAttackAnimation("Strong");
                 break;
             case 2:
                 enemyInfoLabel.setText("Przeciwnik wykonuje: Obrona");
@@ -297,10 +281,8 @@ public class Enemy extends JFrame {
         if (enemyHealth <= 0) {
             System.out.println("Wygrałeś! Przeciwnik został pokonany.");
             infoLabel.setText("Wygrałeś! Przeciwnik został pokonany.");
-            GameEngine.health = playerHealth;
-            GameEngine.coins += 100;
-            GameEngine.updateStats();
-            JOptionPane.showMessageDialog(this, "Wygrałeś! Przeciwnik został pokonany.", "Wygrana", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(this, "Wygrałeś! Przeciwnik został pokonany.", "Wygrana", JOptionPane.INFORMATION_MESSAGE);
+            EndingWindow endWin = new EndingWindow(GameEngine.playername);
             dispose();
         } if(playerHealth <= 0) {
             System.out.println("Przegrałeś! Gracz został pokonany.");
@@ -341,10 +323,10 @@ public class Enemy extends JFrame {
         timer.start();
     }
 
-    private void playEnemyAttackAnimation(int enemyType) {
+    private void playEnemyAttackAnimation(String attackType) {
         try {
 
-            String enemyAttackImage = "/img/enemy" + enemyType + "_attacks.png";
+            String enemyAttackImage = "/img/boss" + attackType + "_attacks.png";
             enemyAttackSheet = ImageIO.read(getClass().getResource(enemyAttackImage));
 
             enemyAttackFrames = new ImageIcon[8];

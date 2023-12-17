@@ -10,8 +10,8 @@ public class Main {
                 //MainMenu.runMenu();
                 //GameEngine gameEngine = new GameEngine("Test");
                 //Campfire campfire = new Campfire();
-                Enemy enemy = new Enemy(10, 100);
-               // enemy.handleEnemy(10,200);
+                //Enemy enemy = new Enemy(10, 100);
+                Boss boss = new Boss(20, 500);
             }
         });
     }
